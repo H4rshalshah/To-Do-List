@@ -1,85 +1,11 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animated To-Do List</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #667eea, #764ba2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .todo-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 400px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: #f3f3f3;
-      margin-bottom: 0.5rem;
-      padding: 0.75rem;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        transform: translateY(10px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .delete-btn {
-      background: crimson;
-      color: white;
-      border: none;
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .delete-btn:hover {
-      background: darkred;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="todo-container">
@@ -87,31 +13,6 @@
     <input type="text" id="taskInput" placeholder="Enter a new task..." />
     <ul id="taskList"></ul>
   </div>
-
-  <script>
-    const taskInput = document.getElementById("taskInput");
-    const taskList = document.getElementById("taskList");
-
-    taskInput.addEventListener("keypress", function (e) {
-      if (e.key === "Enter" && taskInput.value.trim() !== "") {
-        addTask(taskInput.value.trim());
-        taskInput.value = "";
-      }
-    });
-
-    function addTask(taskText) {
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <span>${taskText}</span>
-        <button class="delete-btn">Delete</button>
-      `;
-      taskList.appendChild(li);
-
-      li.querySelector(".delete-btn").addEventListener("click", () => {
-        li.style.animation = "fadeOut 0.3s ease-in-out forwards";
-        setTimeout(() => li.remove(), 300);
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
